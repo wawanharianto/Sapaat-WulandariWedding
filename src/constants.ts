@@ -4,7 +4,7 @@
  */
 
 const images = Object.entries(
-  import.meta.glob('./asset/*.{jpg,jpeg,png}', { eager: true }) // ⚠️ pastikan path sesuai
+  import.meta.glob('./assets/*.{jpg,jpeg,png}', { eager: true }) // ⚠️ pastikan path sesuai
 )
   .sort(([a], [b]) => a.localeCompare(b)) // ✅ biar urut
   .map(([, mod]: any) => mod.default);
