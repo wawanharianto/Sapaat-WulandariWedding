@@ -127,7 +127,7 @@ const Preloader = ({ progress, onComplete }: { progress: number, onComplete: () 
             animate={{ opacity: 1, scale: 1 }}
             className="text-gold font-display tracking-[0.6em] text-sm md:text-base mb-2"
           >
-            RENDERING
+            LOADING
           </motion.div>
           <motion.div 
             className="text-5xl md:text-7xl font-display font-bold text-gold/20 relative inline-block"
@@ -158,7 +158,7 @@ const Preloader = ({ progress, onComplete }: { progress: number, onComplete: () 
             transition={{ duration: 2, repeat: Infinity }}
             className="text-gold/40 font-display text-[10px] tracking-[0.3em] uppercase"
           >
-            Preparing Your Experience
+            ...
           </motion.div>
         </div>
       </div>
@@ -1393,7 +1393,7 @@ const InvitationContent = ({ isPlaying, toggleMusic, guestName }: { isPlaying: b
               Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kami.
             </motion.p>
             <motion.div variants={premiumReveal} className="text-gold font-display tracking-[0.4em] text-xs mb-4">{WEDDING_DATA.groom.name.toUpperCase()} & {WEDDING_DATA.bride.name.toUpperCase()}</motion.div>
-            <motion.div variants={premiumReveal} className="text-[10px] text-cream/30 uppercase tracking-widest">© {new Date().getFullYear()} Digital Invitation</motion.div>
+            <motion.div variants={premiumReveal} className="text-[10px] text-cream/30 uppercase tracking-widest">© {new Date().getFullYear()} Digital Invitation by VhiOne Productions</motion.div>
           </motion.div>
         </footer>
       </motion.div>
