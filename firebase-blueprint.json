@@ -1,0 +1,40 @@
+{
+  "entities": {
+    "Wish": {
+      "title": "Wish",
+      "description": "A wedding wish and RSVP response from a guest.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the guest."
+        },
+        "message": {
+          "type": "string",
+          "description": "The wish or message from the guest."
+        },
+        "attendance": {
+          "type": "string",
+          "enum": ["Hadir", "Tidak Hadir"],
+          "description": "Whether the guest will attend the wedding."
+        },
+        "guests": {
+          "type": "integer",
+          "description": "The number of guests attending."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp when the wish was created."
+        }
+      },
+      "required": ["name", "message", "attendance", "guests", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/wishes/{wishId}": {
+      "schema": "Wish",
+      "description": "Collection of wedding wishes and RSVP responses."
+    }
+  }
+}

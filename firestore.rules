@@ -1,0 +1,47 @@
+// ===============================================================
+// Assumed Data Model
+// ===============================================================
+//
+// Collection: wishes
+// Document ID: {wishId}
+// Fields:
+//   - name: string (required, 1-50 chars) - The name of the guest.
+//   - message: string (required, 1-500 chars) - The wish or message from the guest.
+//   - attendance: string (required, 'Hadir' or 'Tidak Hadir') - Whether the guest will attend.
+//   - guests: number (required, 1-10) - The number of guests attending.
+//   - createdAt: timestamp (required) - The timestamp when the wish was created.
+//
+// ===============================================================
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper Functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isValidWish(data) {
+      return data.keys().hasAll(['name', 'message', 'attendance', 'guests', 'createdAt']) &&
+             data.name is string && data.name.size() > 0 && data.name.size() <= 50 &&
+             data.message is string && data.message.size() > 0 && data.message.size() <= 500 &&
+             data.attendance in ['Hadir', 'Tidak Hadir'] &&
+             data.guests is int && data.guests >= 1 && data.guests <= 10 &&
+             data.createdAt is timestamp;
+    }
+
+    match /wishes/{wishId} {
+      // Allow anyone to read wishes (public guestbook)
+      // Note: In a real production app, you might want to restrict this more,
+      // but for a wedding invitation, it's common to show all wishes.
+      allow read: if true;
+      
+      // Allow creation if the data is valid
+      allow create: if isValidWish(request.resource.data);
+      
+      // Prevent updates and deletes for now to keep it simple and secure
+      allow update, delete: if false;
+    }
+  }
+}

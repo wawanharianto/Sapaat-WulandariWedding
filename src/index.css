@@ -1,0 +1,45 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;700&display=swap');
+
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --font-cursive: "Great Vibes", cursive;
+  --font-sans: "Montserrat", sans-serif;
+  --font-display: "Cinzel", serif;
+  
+  --color-maroon-950: #2d0202;
+  --color-maroon-900: #4a0404;
+  --color-maroon-800: #800000;
+  --color-cream: #fdfaf1;
+  --color-gold: #c5a059;
+  --color-gold-light: #e2c285;
+}
+
+@layer base {
+  body {
+    @apply bg-cream text-maroon-900 font-sans antialiased;
+  }
+}
+
+.bg-pattern {
+  background-image: url("https://www.transparenttextures.com/patterns/batik-fractal.png");
+}
+
+.ornament-border {
+  border-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0c11.046 0 20 8.954 20 20s-8.954 20-20 20S0 31.046 0 20 8.954 0 20 0zm0 2c9.941 0 18 8.059 18 18s-8.059 18-18 18S2 29.941 2 20 10.059 2 20 2z' fill='%23c5a059' fill-opacity='0.4'/%3E%3C/svg%3E") 20 stretch;
+}
+
+.glass-morphism {
+  background: rgba(253, 250, 241, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(197, 160, 89, 0.2);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
